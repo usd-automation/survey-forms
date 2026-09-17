@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Survey Forms</title>
+    <style>
+        /* ============================================
+           SAP Survey Forms - SAP Brand Clean Minimal
+           Font: 72 | Primary: #0070F2
+           ============================================ */
+        @import url('https://fonts.googleapis.com/css2?family=72:wght@300;400;700&display=swap');
+
+        :root {
+            --sap-blue: #0070F2;
+            --sap-blue-light: #E1F4FF;
+            --sap-blue-hover: #0058C6;
+            --sap-blue-accent: #1B90FF;
+            --sap-black: #000000;
+            --sap-dark-gray: #666666;
+            --sap-medium-gray: #999999;
+            --sap-light-gray: #EAECEE;
+            --sap-bg: #FFFFFF;
+            --sap-bg-secondary: #F5F6F7;
+            --sap-border: #E1E2E6;
+            --sap-success: #256F3A;
+            --sap-success-bg: #E6F4EA;
+            --sap-error: #BB0000;
+            --sap-error-bg: #FFEAEA;
+            --sap-radius: 8px;
+            --sap-radius-sm: 4px;
+            --sap-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --sap-shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+            --sap-transition: 0.2s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: '72', 'Segoe UI', Arial, sans-serif;
+            font-size: 14px;
+            color: var(--sap-black);
+            background: var(--sap-bg-secondary);
+            line-height: 1.5;
+        }
+
+        .hidden { display: none !important; }
+
+        /* ============ Login Screen ============ */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #FFFFFF 0%, #E1F4FF 50%, #FFFFFF 100%);
+        }
+
+        .login-card {
+            background: var(--sap-bg);
+            border-radius: 16px;
+            padding: 56px 48px;
+            text-align: center;
+            box-shadow: var(--sap-shadow-lg);
+            max-width: 440px;
+            width: 100%;
+        }
+
+        .login-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 40px;
+            background: var(--sap-blue);
+            border-radius: 6px;
+            margin-bottom: 28px;
+        }
+
+        .login-logo span {
+            color: #fff;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .login-card h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--sap-black);
+            margin-bottom: 8px;
+        }
+
+        .login-subtitle {
+            color: var(--sap-dark-gray);
+            font-size: 14px;
+            margin-bottom: 36px;
+        }
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0;
+            color: var(--sap-medium-gray);
+            font-size: 12px;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--sap-border);
+        }
+
+        .login-footer {
+            margin-top: 24px;
+            font-size: 12px;
+            color: var(--sap-medium-gray);
+        }
+
+        /* ============ Buttons ============ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: var(--sap-radius-sm);
+            font-family: '72', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: var(--sap-transition);
+            gap: 6px;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn:active { transform: scale(0.98); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .btn-primary { background: var(--sap-blue); color: #fff; border-color: var(--sap-blue); }
+        .btn-primary:hover { background: var(--sap-blue-hover); border-color: var(--sap-blue-hover); }
+
+        .btn-outline { background: var(--sap-bg); color: var(--sap-blue); border-color: var(--sap-blue); }
+        .btn-outline:hover { background: var(--sap-blue-light); }
+
+        .btn-ghost { background: none; color: var(--sap-dark-gray); border: none; }
+        .btn-ghost:hover { color: var(--sap-black); background: var(--sap-light-gray); }
+
+        .btn-danger { background: none; color: var(--sap-error); border: 1px solid var(--sap-error); }
+        .btn-danger:hover { background: var(--sap-error-bg); }
+
+        .btn-success { background: var(--sap-success); color: #fff; border-color: var(--sap-success); }
+
+        .btn-sm { padding: 4px 12px; font-size: 12px; }
+        .btn-lg { padding: 12px 28px; font-size: 14px; }
+        .btn-block { width: 100%; }
+
+        .btn-ms {
+            background: var(--sap-bg);
+            color: var(--sap-black);
+            border: 1px solid var(--sap-border);
+            padding: 12px 24px;
+            font-size: 14px;
+            gap: 10px;
+        }
+        .btn-ms:hover { background: var(--sap-bg-secondary); border-color: var(--sap-medium-gray); }
+
+        .btn-ms svg { width: 20px; height: 20px; }
+
+        /* ============ Top Bar ============ */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 48px;
+            padding: 0 24px;
+            background: var(--sap-bg);
+            border-bottom: 1px solid var(--sap-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-left { display: flex; align-items: center; gap: 12px; }
+
+        .topbar-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 24px;
+            background: var(--sap-blue);
+            border-radius: 4px;
+        }
+
+        .topbar-logo span { color: #fff; font-weight: 700; font-size: 11px; letter-spacing: 1px; }
+
+        .topbar-title { font-size: 15px; font-weight: 700; color: var(--sap-black); }
+
+        .topbar-right { display: flex; align-items: center; gap: 16px; }
+
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--sap-blue-light);
+            color: var(--sap-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .user-name { font-size: 13px; color: var(--sap-dark-gray); }
+
+        /* ============ Tab Bar ============ */
+        .tab-bar {
+            display: flex;
+            background: var(--sap-bg);
+            border-bottom: 1px solid var(--sap-border);
+            padding: 0 24px;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-family: '72', sans-serif;
+            font-size: 14px;
+            color: var(--sap-dark-gray);
+            cursor: pointer;
+            transition: var(--sap-transition);
+        }
+
+        .tab:hover { color: var(--sap-black); }
+        .tab.active { color: var(--sap-blue); border-bottom-color: var(--sap-blue); font-weight: 700; }
+
+        /* ============ Views ============ */
+        .view { padding: 24px; max-width: 960px; margin: 0 auto; }
+
+        .view-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .view-header h2 { font-size: 20px; font-weight: 700; }
+
+        .view-header-actions { display: flex; gap: 12px; align-items: center; }
+
+        /* ============ Survey Grid ============ */
+        .survey-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        .survey-card {
+            background: var(--sap-bg);
+            border-radius: var(--sap-radius);
+            padding: 20px;
+            box-shadow: var(--sap-shadow);
+            border-left: 4px solid var(--sap-blue);
+            transition: var(--sap-transition);
+        }
+
+        .survey-card:hover { box-shadow: var(--sap-shadow-lg); transform: translateY(-1px); }
+
+        .survey-card-title { font-size: 16px; font-weight: 700; color: var(--sap-black); margin-bottom: 6px; }
+
+        .survey-card-desc {
+            font-size: 13px;
+            color: var(--sap-dark-gray);
+            margin-bottom: 14px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .survey-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--sap-medium-gray);
+            margin-bottom: 16px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .status-active { background: var(--sap-success-bg); color: var(--sap-success); }
+        .status-closed { background: var(--sap-light-gray); color: var(--sap-dark-gray); }
+
+        .survey-card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+        /* ============ Form Elements ============ */
+        .form-container {
+            background: var(--sap-bg);
+            border-radius: var(--sap-radius);
+            padding: 28px;
+            box-shadow: var(--sap-shadow);
+        }
+
+        .form-section { margin-bottom: 20px; }
+
+        .form-label { display: block; font-size: 13px; font-weight: 700; color: var(--sap-black); margin-bottom: 6px; }
+
+        .required { color: var(--sap-error); }
+
+        .form-input, .form-textarea, .form-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--sap-border);
+            border-radius: var(--sap-radius-sm);
+            font-family: '72', sans-serif;
+            font-size: 14px;
+            color: var(--sap-black);
+            background: var(--sap-bg);
+            transition: var(--sap-transition);
+        }
+
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--sap-blue);
+            box-shadow: 0 0 0 3px rgba(0,112,242,0.12);
+        }
+
+        .form-textarea { resize: vertical; }
+
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+            max-width: 300px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--sap-border);
+        }
+
+        /* ============ Question Builder Cards ============ */
+        .question-card {
+            background: var(--sap-bg-secondary);
+            border: 1px solid var(--sap-border);
+            border-radius: var(--sap-radius);
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: var(--sap-transition);
+        }
+
+        .question-card:hover { border-color: var(--sap-blue); }
+
+        .question-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .q-header-left { display: flex; gap: 8px; align-items: center; }
+
+        .question-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--sap-blue);
+            background: var(--sap-blue-light);
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        .question-type-badge {
+            font-size: 11px;
+            color: var(--sap-dark-gray);
+            background: var(--sap-light-gray);
+            padding: 2px 10px;
+            border-radius: 12px;
+        }
+
+        .q-header-right { display: flex; gap: 8px; align-items: center; }
+
+        .required-toggle { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--sap-dark-gray); cursor: pointer; }
+        .required-toggle input { accent-color: var(--sap-blue); }
+
+        .question-remove {
+            background: none;
+            border: none;
+            color: var(--sap-medium-gray);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 2px 6px;
+            line-height: 1;
+            border-radius: 4px;
+        }
+        .question-remove:hover { color: var(--sap-error); background: var(--sap-error-bg); }
+
+        .question-card .form-input { background: var(--sap-bg); }
+
+        .options-container { margin-top: 12px; }
+
+        .option-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .option-row .form-input { flex: 1; }
+
+        .option-remove {
+            background: none;
+            border: none;
+            color: var(--sap-medium-gray);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        .option-remove:hover { color: var(--sap-error); }
+
+        .add-option-btn {
+            font-size: 12px;
+            color: var(--sap-blue);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: '72', sans-serif;
+            font-weight: 700;
+            padding: 4px 0;
+        }
+        .add-option-btn:hover { text-decoration: underline; }
+
+        .add-question-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px;
+            margin-top: 8px;
+            background: var(--sap-bg);
+            border: 2px dashed var(--sap-border);
+            border-radius: var(--sap-radius);
+            flex-wrap: wrap;
+        }
+
+        .add-label { font-size: 13px; font-weight: 700; color: var(--sap-dark-gray); }
+
+        /* ============ Fill Survey View ============ */
+        .fill-container { max-width: 640px; margin: 0 auto; }
+
+        .fill-header {
+            background: var(--sap-bg);
+            border-radius: var(--sap-radius);
+            padding: 28px;
+            margin-bottom: 16px;
+            box-shadow: var(--sap-shadow);
+            border-top: 4px solid var(--sap-blue);
+        }
+
+        .fill-header h2 { font-size: 22px; margin-bottom: 8px; }
+        .fill-description { color: var(--sap-dark-gray); font-size: 14px; }
+
+        .fill-question {
+            background: var(--sap-bg);
+            border-radius: var(--sap-radius);
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: var(--sap-shadow);
+            transition: var(--sap-transition);
+        }
+
+        .fill-question.error { border: 1px solid var(--sap-error); }
+
+        .fill-question-label { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--sap-black); }
+        .fill-question-required { color: var(--sap-error); margin-left: 2px; }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1px solid var(--sap-border);
+            border-radius: var(--sap-radius-sm);
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: var(--sap-transition);
+            font-size: 14px;
+        }
+
+        .option-label:hover { background: var(--sap-blue-light); border-color: var(--sap-blue); }
+        .option-label input[type="radio"],
+        .option-label input[type="checkbox"] { accent-color: var(--sap-blue); }
+
+        .rating-container { display: flex; gap: 8px; }
+
+        .rating-btn {
+            width: 44px;
+            height: 44px;
+            border: 2px solid var(--sap-border);
+            border-radius: var(--sap-radius-sm);
+            background: var(--sap-bg);
+            font-family: '72', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--sap-dark-gray);
+            cursor: pointer;
+            transition: var(--sap-transition);
+        }
+
+        .rating-btn:hover { border-color: var(--sap-blue); color: var(--sap-blue); }
+        .rating-btn.selected { background: var(--sap-blue); color: #fff; border-color: var(--sap-blue); }
+
+        /* ============ Responses Table ============ */
+        .responses-table-wrap {
+            overflow-x: auto;
+            background: var(--sap-bg);
+            border-radius: var(--sap-radius);
+            box-shadow: var(--sap-shadow);
+        }
+
+        .responses-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+        .responses-table th {
+            background: var(--sap-bg-secondary);
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--sap-dark-gray);
+            border-bottom: 2px solid var(--sap-border);
+            white-space: nowrap;
+        }
+
+        .responses-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--sap-border);
+            color: var(--sap-black);
+        }
+
+        .responses-table tr:hover td { background: var(--sap-blue-light); }
+
+        .response-count-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--sap-blue);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            min-width: 22px;
+            height: 22px;
+            border-radius: 11px;
+            padding: 0 8px;
+        }
+
+        /* ============ Modal ============ */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            position: relative;
+            background: var(--sap-bg);
+            border-radius: var(--sap-radius);
+            padding: 28px;
+            max-width: 520px;
+            width: 90%;
+            box-shadow: var(--sap-shadow-lg);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 { font-size: 18px; }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--sap-medium-gray);
+            cursor: pointer;
+            line-height: 1;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        .modal-close:hover { background: var(--sap-light-gray); color: var(--sap-black); }
+
+        .copy-field { display: flex; gap: 8px; }
+        .copy-field .form-input { flex: 1; background: var(--sap-bg-secondary); }
+
+        .share-note { font-size: 12px; color: var(--sap-medium-gray); margin-top: 12px; }
+
+        /* ============ Toast ============ */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1D2329;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: var(--sap-radius);
+            font-size: 13px;
+            z-index: 2000;
+            box-shadow: var(--sap-shadow-lg);
+            animation: toastIn 0.3s ease;
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(12px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* ============ Loading ============ */
+        .loading-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.88);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+        }
+
+        .spinner {
+            width: 36px;
+            height: 36px;
+            border: 3px solid var(--sap-light-gray);
+            border-top: 3px solid var(--sap-blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .loading-overlay p { font-size: 13px; color: var(--sap-dark-gray); }
+
+        /* ============ Empty State ============ */
+        .empty-state {
+            text-align: center;
+            padding: 56px 24px;
+            grid-column: 1 / -1;
+        }
+
+        .empty-icon { font-size: 48px; margin-bottom: 16px; opacity: 0.3; }
+        .empty-state h3 { font-size: 16px; color: var(--sap-black); margin-bottom: 8px; }
+        .empty-state p { font-size: 13px; color: var(--sap-dark-gray); margin-bottom: 20px; }
+
+        /* ============ Success State ============ */
+        .success-state { text-align: center; padding: 48px; }
+        .success-icon {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: var(--sap-success-bg); color: var(--sap-success);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 28px; margin-bottom: 16px;
+        }
+
+        /* ============ Demo Banner ============ */
+        .demo-banner {
+            background: var(--sap-blue-light);
+            color: var(--sap-blue);
+            text-align: center;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            border-bottom: 1px solid #B8DFFF;
+        }
+
+        /* ============ Responsive ============ */
+        @media (max-width: 640px) {
+            .view { padding: 16px; }
+            .survey-grid { grid-template-columns: 1fr; }
+            .tab-bar { overflow-x: auto; }
+            .view-header { flex-direction: column; align-items: flex-start; }
+            .view-header-actions { width: 100%; }
+            .form-select { max-width: 100%; }
+            .login-card { padding: 36px 24px; margin: 16px; }
+            .add-question-bar { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== LOGIN SCREEN ==================== -->
+<div id="login-screen" class="login-screen">
+    <div class="login-card">
+        <div class="login-logo"><span>SAP</span></div>
+        <h1>Survey Forms</h1>
+        <p class="login-subtitle">Create, share, and collect survey responses</p>
+
+        <button class="btn btn-ms btn-block btn-lg" onclick="App.login()">
+            <svg viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#F25022"/><rect x="11" y="1" width="9" height="9" fill="#7FBA00"/><rect x="1" y="11" width="9" height="9" fill="#00A4EF"/><rect x="11" y="11" width="9" height="9" fill="#FFB900"/></svg>
+            Sign in with Microsoft
+        </button>
+
+        <div class="login-divider">Secured by Microsoft Entra ID</div>
+
+        <p class="login-footer">Your surveys are stored in SharePoint.<br>Authentication is handled by your organization.</p>
+    </div>
+</div>
+
+<!-- ==================== APP SHELL ==================== -->
+<div id="app-shell" class="hidden">
+
+    <!-- Demo Banner -->
+    <div class="demo-banner" id="demo-banner">
+        DEMO MODE -- Data is stored locally in your browser. Connect to SharePoint to go live.
+    </div>
+
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <div class="topbar-logo"><span>SAP</span></div>
+            <span class="topbar-title">Survey Forms</span>
+        </div>
+        <div class="topbar-right">
+            <div class="user-avatar" id="user-avatar">U</div>
+            <span class="user-name" id="user-name">User</span>
+            <button class="btn btn-ghost btn-sm" onclick="App.logout()">Sign Out</button>
+        </div>
+    </header>
+
+    <!-- Tab Bar -->
+    <nav class="tab-bar">
+        <button class="tab active" data-view="dashboard" onclick="App.showView('dashboard')">Dashboard</button>
+        <button class="tab" data-view="create" onclick="App.showView('create')">Create Survey</button>
+        <button class="tab" data-view="responses" onclick="App.showView('responses')">Responses</button>
+    </nav>
+
+    <!-- ====== DASHBOARD VIEW ====== -->
+    <main id="view-dashboard" class="view">
+        <div class="view-header">
+            <h2>My Surveys</h2>
+            <button class="btn btn-primary" onclick="App.showView('create')">+ New Survey</button>
+        </div>
+        <div id="survey-list" class="survey-grid"></div>
+    </main>
+
+    <!-- ====== CREATE SURVEY VIEW ====== -->
+    <main id="view-create" class="view hidden">
+        <div class="view-header">
+            <h2 id="create-view-title">Create New Survey</h2>
+        </div>
+        <div class="form-container">
+            <div class="form-section">
+                <label class="form-label">Survey Title <span class="required">*</span></label>
+                <input type="text" id="survey-title" class="form-input" placeholder="Enter survey title...">
+            </div>
+            <div class="form-section">
+                <label class="form-label">Description</label>
+                <textarea id="survey-description" class="form-textarea" placeholder="Describe what this survey is about..." rows="3"></textarea>
+            </div>
+            <div class="form-section">
+                <label class="form-label">Questions</label>
+                <div id="questions-container"></div>
+                <div class="add-question-bar">
+                    <span class="add-label">Add Question:</span>
+                    <button class="btn btn-outline btn-sm" onclick="App.addQuestion('text')">Text</button>
+                    <button class="btn btn-outline btn-sm" onclick="App.addQuestion('multiple_choice')">Multiple Choice</button>
+                    <button class="btn btn-outline btn-sm" onclick="App.addQuestion('rating')">Rating (1-5)</button>
+                    <button class="btn btn-outline btn-sm" onclick="App.addQuestion('yes_no')">Yes / No</button>
+                    <button class="btn btn-outline btn-sm" onclick="App.addQuestion('dropdown')">Dropdown</button>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-ghost" onclick="App.cancelCreate()">Cancel</button>
+                <button class="btn btn-primary btn-lg" onclick="App.saveSurvey()">Save Survey</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- ====== RESPONSES VIEW ====== -->
+    <main id="view-responses" class="view hidden">
+        <div class="view-header">
+            <h2>Survey Responses</h2>
+            <div class="view-header-actions">
+                <select id="response-survey-select" class="form-select" onchange="App.loadResponses()">
+                    <option value="">Select a survey...</option>
+                </select>
+                <button class="btn btn-outline btn-sm" onclick="App.exportResponses()">Export CSV</button>
+            </div>
+        </div>
+        <div id="responses-container">
+            <div class="empty-state">
+                <div class="empty-icon">&#9776;</div>
+                <h3>Select a survey</h3>
+                <p>Choose a survey above to view its responses.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ====== FILL SURVEY VIEW ====== -->
+    <main id="view-fill" class="view hidden">
+        <div class="fill-container">
+            <div class="fill-header">
+                <h2 id="fill-survey-title"></h2>
+                <p id="fill-survey-description" class="fill-description"></p>
+            </div>
+            <div id="fill-questions-container"></div>
+            <div class="form-actions" id="fill-actions">
+                <button class="btn btn-ghost" onclick="App.showView('dashboard')">Back</button>
+                <button class="btn btn-primary btn-lg" onclick="App.submitResponse()">Submit Response</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- ==================== SHARE MODAL ==================== -->
+<div id="share-modal" class="modal hidden">
+    <div class="modal-backdrop" onclick="App.closeShareModal()"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Share Survey</h3>
+            <button class="modal-close" onclick="App.closeShareModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <label class="form-label">Shareable Link</label>
+            <div class="copy-field">
+                <input type="text" id="share-link" class="form-input" readonly>
+                <button class="btn btn-primary btn-sm" onclick="App.copyShareLink()">Copy</button>
+            </div>
+            <p class="share-note">Anyone with this link can fill out the survey after signing in with their Microsoft account.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== TOAST ==================== -->
+<div id="toast" class="toast hidden"><span id="toast-message"></span></div>
+
+<!-- ==================== LOADING ==================== -->
+<div id="loading-overlay" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+</div>
+
+<!-- ==================== APPLICATION JAVASCRIPT ==================== -->
+<script>
+/* ============================================
+   SAP Survey Forms Application
+   Demo mode: localStorage   |   Live mode: SharePoint via Microsoft Graph
+   ============================================ */
+
+const App = {
+    surveys: [],
+    questionCounter: 0,
+    editingSurveyId: null,
+    _toastTimer: null,
+    _lastExportData: null,
+    currentUser: null,
+
+    /* ============ CONFIGURATION ============
+       To connect to SharePoint, update these values and set USE_SHAREPOINT = true
+    */
+    USE_SHAREPOINT: true,
+    CONFIG: {
+        clientId: '156da6ae-f0ed-4daa-98dc-545d2d697ba4',
+        tenantId: '42f7676c-f455-423c-82f6-dc2d99791af7',
+        redirectUri: window.location.origin + window.location.pathname,
+        scopes: ['User.Read', 'Sites.Selected'],
+        sharePointSiteId: 'sap.sharepoint.com,6bd464a0-622e-4241-aeab-6e2db52afca9,ac2b8837-8b34-4fd7-81b4-143bc49da032',
+        surveyListName: 'Surveys',
+        questionListName: 'SurveyQuestions',
+        responseListName: 'SurveyResponses',
+        masterListName: 'RegisteredUsers',
+        // Field mapping for your existing RegisteredUsers list
+        masterFields: {
+            name: 'Title',                    // Column: Title (first name)
+            fullName: 'Full_x0020_Name',      // Column: Full Name
+            email: 'Email_x0020_Address',     // Column: Email Address
+            role: 'Role',                     // Column: Role
+            status: 'Status',                 // Column: Status
+            group: 'Group',                   // Column: Group
+            supervisor: 'Supervisor',         // Column: Supervisor
+            sapId: 'SAP_x0020_ID'            // Column: SAP ID
+        },
+        graphBaseUrl: 'https://graph.microsoft.com/v1.0'
+    },
+
+    /* ============ AUTH ============ */
+    login() {
+        if (this.USE_SHAREPOINT) {
+            // Real Microsoft Entra ID login -- requires MSAL.js loaded
+            this._msalLogin();
+            return;
+        }
+        // Demo mode
+        this.currentUser = { name: 'Demo User', email: 'demo@sap.com' };
+        this._onLoginSuccess();
+    },
+
+    logout() {
+        if (this.USE_SHAREPOINT) {
+            this._msalLogout();
+            return;
+        }
+        this.currentUser = null;
+        document.getElementById('app-shell').classList.add('hidden');
+        document.getElementById('login-screen').classList.remove('hidden');
+        document.getElementById('login-screen').style.display = '';
+    },
+
+    _onLoginSuccess() {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('app-shell').classList.remove('hidden');
+        document.getElementById('user-name').textContent = this.currentUser.fullName || this.currentUser.name;
+        document.getElementById('user-avatar').textContent = (this.currentUser.fullName || this.currentUser.name).charAt(0).toUpperCase();
+
+        if (!this.USE_SHAREPOINT) {
+            document.getElementById('demo-banner').classList.remove('hidden');
+        } else {
+            document.getElementById('demo-banner').classList.add('hidden');
+        }
+
+        // Check for survey link in URL
+        const params = new URLSearchParams(window.location.search);
+        const surveyId = params.get('survey');
+        if (surveyId) {
+            this.openSurveyForFilling(surveyId);
+        } else {
+            this.loadDashboard();
+        }
+    },
+
+    /* ============ LOCAL STORAGE (DEMO) ============ */
+    _store(key, data) { localStorage.setItem('sap_survey_' + key, JSON.stringify(data)); },
+    _load(key) { try { return JSON.parse(localStorage.getItem('sap_survey_' + key)) || []; } catch(e) { return []; } },
+
+    /* ============ DATA LAYER ============ */
+    async getSurveys() {
+        if (this.USE_SHAREPOINT) return this._graphGetSurveys();
+        return this._load('surveys');
+    },
+
+    async saveSurveyData(survey) {
+        if (this.USE_SHAREPOINT) return this._graphCreateSurvey(survey);
+        const surveys = this._load('surveys');
+        survey.id = survey.id || 'srv_' + Date.now();
+        survey.CreatedDate = survey.CreatedDate || new Date().toISOString();
+        survey.Status = 'Active';
+        surveys.push(survey);
+        this._store('surveys', surveys);
+        return survey;
+    },
+
+    async deleteSurveyData(surveyId) {
+        if (this.USE_SHAREPOINT) return this._graphDeleteSurvey(surveyId);
+        let surveys = this._load('surveys');
+        surveys = surveys.filter(s => s.id !== surveyId);
+        this._store('surveys', surveys);
+        // Also delete questions and responses
+        let questions = this._load('questions');
+        questions = questions.filter(q => q.SurveyId !== surveyId);
+        this._store('questions', questions);
+        let responses = this._load('responses');
+        responses = responses.filter(r => r.SurveyId !== surveyId);
+        this._store('responses', responses);
+    },
+
+    async getQuestions(surveyId) {
+        if (this.USE_SHAREPOINT) return this._graphGetQuestions(surveyId);
+        return this._load('questions').filter(q => q.SurveyId === surveyId).sort((a,b) => a.OrderIndex - b.OrderIndex);
+    },
+
+    async saveQuestionData(question) {
+        if (this.USE_SHAREPOINT) return this._graphCreateQuestion(question);
+        const questions = this._load('questions');
+        question.id = question.id || 'q_' + Date.now() + '_' + Math.random().toString(36).substr(2,5);
+        questions.push(question);
+        this._store('questions', questions);
+        return question;
+    },
+
+    async getResponses(surveyId) {
+        if (this.USE_SHAREPOINT) return this._graphGetResponses(surveyId);
+        return this._load('responses').filter(r => r.SurveyId === surveyId);
+    },
+
+    async saveResponseData(response) {
+        if (this.USE_SHAREPOINT) return this._graphSubmitResponse(response);
+        const responses = this._load('responses');
+        response.id = 'r_' + Date.now();
+        responses.push(response);
+        this._store('responses', responses);
+        return response;
+    },
+
+    /* ============ NAVIGATION ============ */
+    showView(viewName) {
+        document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+        const view = document.getElementById('view-' + viewName);
+        const tab = document.querySelector('.tab[data-view="' + viewName + '"]');
+        if (view) view.classList.remove('hidden');
+        if (tab) tab.classList.add('active');
+
+        if (viewName === 'dashboard') this.loadDashboard();
+        if (viewName === 'create') this.initCreateView();
+        if (viewName === 'responses') this.loadResponsesSurveyList();
+    },
+
+    /* ============ DASHBOARD ============ */
+    async loadDashboard() {
+        this.showLoading(true);
+        try {
+            this.surveys = await this.getSurveys();
+            this.renderDashboard();
+        } catch(err) {
+            console.error('Load surveys error:', err);
+            this.showToast('Failed to load surveys.');
+        }
+        this.showLoading(false);
+    },
+
+    renderDashboard() {
+        const container = document.getElementById('survey-list');
+        if (this.surveys.length === 0) {
+            container.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9744;</div><h3>No surveys yet</h3><p>Create your first survey to get started.</p><button class="btn btn-primary" onclick="App.showView(\'create\')">Create Survey</button></div>';
+            return;
+        }
+
+        container.innerHTML = this.surveys.map(s => {
+            const title = this.esc(s.Title);
+            const desc = this.esc(s.Description || 'No description');
+            const date = this.fmtDate(s.CreatedDate);
+            const status = s.Status || 'Active';
+            const statusClass = status === 'Active' ? 'status-active' : 'status-closed';
+            return '<div class="survey-card">' +
+                '<div class="survey-card-title">' + title + '</div>' +
+                '<div class="survey-card-desc">' + desc + '</div>' +
+                '<div class="survey-card-meta">' +
+                    '<span>' + date + '</span>' +
+                    '<span class="status-badge ' + statusClass + '">' + status + '</span>' +
+                '</div>' +
+                '<div class="survey-card-actions">' +
+                    '<button class="btn btn-primary btn-sm" onclick="App.shareSurvey(\'' + s.id + '\')">Share Link</button>' +
+                    '<button class="btn btn-outline btn-sm" onclick="App.openSurveyForFilling(\'' + s.id + '\')">Preview</button>' +
+                    '<button class="btn btn-ghost btn-sm" onclick="App.editSurvey(\'' + s.id + '\')">Edit</button>' +
+                    '<button class="btn btn-danger btn-sm" onclick="App.confirmDelete(\'' + s.id + '\')">Delete</button>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+    },
+
+    /* ============ CREATE / EDIT ============ */
+    initCreateView() {
+        this.editingSurveyId = null;
+        this.questionCounter = 0;
+        document.getElementById('create-view-title').textContent = 'Create New Survey';
+        document.getElementById('survey-title').value = '';
+        document.getElementById('survey-description').value = '';
+        document.getElementById('questions-container').innerHTML = '';
+    },
+
+    addQuestion(type) {
+        this.questionCounter++;
+        const qId = 'q-' + this.questionCounter;
+        const labels = { text: 'Text', multiple_choice: 'Multiple Choice', rating: 'Rating (1-5)', yes_no: 'Yes / No', dropdown: 'Dropdown' };
+
+        let optionsHtml = '';
+        if (type === 'multiple_choice' || type === 'dropdown') {
+            optionsHtml = '<div class="options-container" id="options-' + qId + '">' +
+                '<label class="form-label" style="font-size:12px;margin-top:8px;">Answer Options</label>' +
+                '<div class="option-row"><input type="text" class="form-input" placeholder="Option 1" data-option="' + qId + '"><button class="option-remove" onclick="this.closest(\'.option-row\').remove()">&times;</button></div>' +
+                '<div class="option-row"><input type="text" class="form-input" placeholder="Option 2" data-option="' + qId + '"><button class="option-remove" onclick="this.closest(\'.option-row\').remove()">&times;</button></div>' +
+                '</div>' +
+                '<button class="add-option-btn" onclick="App.addOption(\'' + qId + '\')">+ Add Option</button>';
+        }
+
+        const html = '<div class="question-card" id="' + qId + '" data-type="' + type + '">' +
+            '<div class="question-card-header">' +
+                '<div class="q-header-left"><span class="question-number">Q' + this.questionCounter + '</span><span class="question-type-badge">' + labels[type] + '</span></div>' +
+                '<div class="q-header-right">' +
+                    '<label class="required-toggle"><input type="checkbox" checked data-required="' + qId + '"> Required</label>' +
+                    '<button class="question-remove" onclick="document.getElementById(\'' + qId + '\').remove()">&times;</button>' +
+                '</div>' +
+            '</div>' +
+            '<input type="text" class="form-input" placeholder="Enter your question..." data-question-text="' + qId + '">' +
+            optionsHtml +
+        '</div>';
+
+        document.getElementById('questions-container').insertAdjacentHTML('beforeend', html);
+    },
+
+    addOption(qId) {
+        const container = document.getElementById('options-' + qId);
+        const count = container.querySelectorAll('.option-row').length + 1;
+        container.insertAdjacentHTML('beforeend',
+            '<div class="option-row"><input type="text" class="form-input" placeholder="Option ' + count + '" data-option="' + qId + '"><button class="option-remove" onclick="this.closest(\'.option-row\').remove()">&times;</button></div>'
+        );
+    },
+
+    async saveSurvey() {
+        const title = document.getElementById('survey-title').value.trim();
+        const desc = document.getElementById('survey-description').value.trim();
+
+        if (!title) { this.showToast('Please enter a survey title.'); return; }
+
+        const cards = document.querySelectorAll('.question-card');
+        if (cards.length === 0) { this.showToast('Please add at least one question.'); return; }
+
+        const questions = [];
+        let valid = true;
+
+        cards.forEach(function(card, idx) {
+            const qId = card.id;
+            const text = card.querySelector('[data-question-text="' + qId + '"]').value.trim();
+            const type = card.dataset.type;
+            const required = card.querySelector('[data-required="' + qId + '"]').checked;
+
+            if (!text) { valid = false; return; }
+
+            let options = [];
+            if (type === 'multiple_choice' || type === 'dropdown') {
+                card.querySelectorAll('[data-option="' + qId + '"]').forEach(function(inp) {
+                    const v = inp.value.trim();
+                    if (v) options.push(v);
+                });
+                if (options.length < 2) { valid = false; return; }
+            }
+
+            questions.push({ text: text, type: type, required: required, options: options, order: idx + 1 });
+        });
+
+        if (!valid) {
+            this.showToast('Fill in all questions. Multiple choice needs at least 2 options.');
+            return;
+        }
+
+        this.showLoading(true);
+        try {
+            // If editing, delete old first
+            if (this.editingSurveyId) {
+                await this.deleteSurveyData(this.editingSurveyId);
+            }
+
+            const survey = await this.saveSurveyData({
+                Title: title,
+                Description: desc,
+                CreatedByEmail: this.currentUser.email
+            });
+
+            for (const q of questions) {
+                await this.saveQuestionData({
+                    Title: q.text,
+                    SurveyId: survey.id,
+                    QuestionType: q.type,
+                    Options: q.options.length > 0 ? JSON.stringify(q.options) : '',
+                    IsRequired: q.required ? 'Yes' : 'No',
+                    OrderIndex: q.order
+                });
+            }
+
+            this.showToast(this.editingSurveyId ? 'Survey updated.' : 'Survey created.');
+            this.editingSurveyId = null;
+            this.showView('dashboard');
+        } catch(err) {
+            console.error('Save error:', err);
+            this.showToast('Failed to save: ' + err.message);
+        }
+        this.showLoading(false);
+    },
+
+    async editSurvey(surveyId) {
+        this.showLoading(true);
+        try {
+            const survey = this.surveys.find(s => s.id === surveyId);
+            const questions = await this.getQuestions(surveyId);
+
+            this.showView('create');
+            this.editingSurveyId = surveyId;
+            document.getElementById('create-view-title').textContent = 'Edit Survey';
+            document.getElementById('survey-title').value = survey.Title || '';
+            document.getElementById('survey-description').value = survey.Description || '';
+            document.getElementById('questions-container').innerHTML = '';
+            this.questionCounter = 0;
+
+            questions.forEach(function(q) {
+                App.addQuestion(q.QuestionType);
+                const qId = 'q-' + App.questionCounter;
+                const card = document.getElementById(qId);
+                card.querySelector('[data-question-text="' + qId + '"]').value = q.Title || '';
+                card.querySelector('[data-required="' + qId + '"]').checked = q.IsRequired === 'Yes';
+
+                if ((q.QuestionType === 'multiple_choice' || q.QuestionType === 'dropdown') && q.Options) {
+                    const opts = JSON.parse(q.Options);
+                    const container = document.getElementById('options-' + qId);
+                    container.innerHTML = '<label class="form-label" style="font-size:12px;margin-top:8px;">Answer Options</label>';
+                    opts.forEach(function(opt, i) {
+                        container.insertAdjacentHTML('beforeend',
+                            '<div class="option-row"><input type="text" class="form-input" value="' + App.esc(opt) + '" data-option="' + qId + '"><button class="option-remove" onclick="this.closest(\'.option-row\').remove()">&times;</button></div>'
+                        );
+                    });
+                }
+            });
+        } catch(err) {
+            console.error('Edit error:', err);
+            this.showToast('Failed to load survey for editing.');
+        }
+        this.showLoading(false);
+    },
+
+    cancelCreate() {
+        this.editingSurveyId = null;
+        this.showView('dashboard');
+    },
+
+    async confirmDelete(surveyId) {
+        if (!confirm('Delete this survey and all its responses? This cannot be undone.')) return;
+        this.showLoading(true);
+        try {
+            await this.deleteSurveyData(surveyId);
+            this.showToast('Survey deleted.');
+            this.loadDashboard();
+        } catch(err) {
+            this.showToast('Failed to delete.');
+        }
+        this.showLoading(false);
+    },
+
+    /* ============ SHARE ============ */
+    shareSurvey(surveyId) {
+        const url = window.location.origin + window.location.pathname + '?survey=' + surveyId;
+        document.getElementById('share-link').value = url;
+        document.getElementById('share-modal').classList.remove('hidden');
+    },
+
+    closeShareModal() { document.getElementById('share-modal').classList.add('hidden'); },
+
+    copyShareLink() {
+        const input = document.getElementById('share-link');
+        input.select();
+        navigator.clipboard.writeText(input.value).then(() => {
+            this.showToast('Link copied to clipboard.');
+        }).catch(() => {
+            document.execCommand('copy');
+            this.showToast('Link copied.');
+        });
+    },
+
+    /* ============ FILL SURVEY ============ */
+    async openSurveyForFilling(surveyId) {
+        this.showLoading(true);
+        try {
+            document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+            const surveys = await this.getSurveys();
+            const survey = surveys.find(s => s.id === surveyId);
+            if (!survey) {
+                this.showToast('Survey not found.');
+                this.showView('dashboard');
+                this.showLoading(false);
+                return;
+            }
+
+            const questions = await this.getQuestions(surveyId);
+            this.renderFillView(survey, questions);
+            document.getElementById('view-fill').classList.remove('hidden');
+            document.getElementById('fill-actions').classList.remove('hidden');
+        } catch(err) {
+            console.error('Fill error:', err);
+            this.showToast('Failed to load survey.');
+            this.showView('dashboard');
+        }
+        this.showLoading(false);
+    },
+
+    renderFillView(survey, questions) {
+        document.getElementById('fill-survey-title').textContent = survey.Title;
+        document.getElementById('fill-survey-description').textContent = survey.Description || '';
+
+        const container = document.getElementById('fill-questions-container');
+        container.dataset.surveyId = survey.id;
+
+        container.innerHTML = questions.map(function(q, idx) {
+            const req = q.IsRequired === 'Yes' ? '<span class="fill-question-required">*</span>' : '';
+            let inputHtml = '';
+
+            switch (q.QuestionType) {
+                case 'text':
+                    inputHtml = '<textarea class="form-textarea" data-answer="' + q.id + '" rows="3" placeholder="Your answer..."></textarea>';
+                    break;
+                case 'multiple_choice':
+                    var opts = q.Options ? JSON.parse(q.Options) : [];
+                    inputHtml = opts.map(function(opt) {
+                        return '<label class="option-label"><input type="radio" name="ans-' + q.id + '" value="' + App.esc(opt) + '"> ' + App.esc(opt) + '</label>';
+                    }).join('');
+                    break;
+                case 'rating':
+                    inputHtml = '<div class="rating-container" data-answer="' + q.id + '">' +
+                        [1,2,3,4,5].map(function(n) {
+                            return '<button type="button" class="rating-btn" data-value="' + n + '" onclick="App.selectRating(this)">' + n + '</button>';
+                        }).join('') + '</div>';
+                    break;
+                case 'yes_no':
+                    inputHtml = '<label class="option-label"><input type="radio" name="ans-' + q.id + '" value="Yes"> Yes</label>' +
+                                '<label class="option-label"><input type="radio" name="ans-' + q.id + '" value="No"> No</label>';
+                    break;
+                case 'dropdown':
+                    var ddOpts = q.Options ? JSON.parse(q.Options) : [];
+                    inputHtml = '<select class="form-select" data-answer="' + q.id + '" style="max-width:100%;"><option value="">Select...</option>' +
+                        ddOpts.map(function(opt) { return '<option value="' + App.esc(opt) + '">' + App.esc(opt) + '</option>'; }).join('') + '</select>';
+                    break;
+            }
+
+            return '<div class="fill-question" data-question-id="' + q.id + '" data-required="' + q.IsRequired + '">' +
+                '<div class="fill-question-label">' + (idx + 1) + '. ' + App.esc(q.Title) + ' ' + req + '</div>' +
+                inputHtml + '</div>';
+        }).join('');
+    },
+
+    selectRating(btn) {
+        btn.closest('.rating-container').querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+    },
+
+    async submitResponse() {
+        const container = document.getElementById('fill-questions-container');
+        const surveyId = container.dataset.surveyId;
+        const divs = container.querySelectorAll('.fill-question');
+        const answers = {};
+        let valid = true;
+
+        divs.forEach(function(div) {
+            const qId = div.dataset.questionId;
+            const req = div.dataset.required === 'Yes';
+            let answer = '';
+
+            const ta = div.querySelector('[data-answer="' + qId + '"]');
+            if (ta) {
+                answer = ta.tagName === 'SELECT' ? ta.value : (ta.tagName === 'TEXTAREA' ? ta.value.trim() : '');
+            }
+
+            const radio = div.querySelector('input[name="ans-' + qId + '"]:checked');
+            if (radio) answer = radio.value;
+
+            const rc = div.querySelector('.rating-container[data-answer="' + qId + '"]');
+            if (rc) {
+                const sel = rc.querySelector('.rating-btn.selected');
+                answer = sel ? sel.dataset.value : '';
+            }
+
+            if (req && !answer) {
+                valid = false;
+                div.classList.add('error');
+            } else {
+                div.classList.remove('error');
+            }
+
+            answers[qId] = answer;
+        });
+
+        if (!valid) { this.showToast('Please answer all required questions.'); return; }
+
+        this.showLoading(true);
+        try {
+            await this.saveResponseData({
+                SurveyId: surveyId,
+                RespondentEmail: this.currentUser.email,
+                RespondentName: this.currentUser.name,
+                Answers: JSON.stringify(answers),
+                SubmittedDate: new Date().toISOString()
+            });
+
+            container.innerHTML = '<div class="success-state">' +
+                '<div class="success-icon">&#10003;</div>' +
+                '<h3 style="font-size:18px;margin-bottom:8px;">Response Submitted</h3>' +
+                '<p style="color:var(--sap-dark-gray);margin-bottom:20px;">Thank you for completing the survey.</p>' +
+                '<button class="btn btn-primary" onclick="App.showView(\'dashboard\')">Back to Dashboard</button>' +
+            '</div>';
+            document.getElementById('fill-actions').classList.add('hidden');
+        } catch(err) {
+            this.showToast('Failed to submit: ' + err.message);
+        }
+        this.showLoading(false);
+    },
+
+    /* ============ RESPONSES ============ */
+    async loadResponsesSurveyList() {
+        try {
+            if (this.surveys.length === 0) this.surveys = await this.getSurveys();
+            const select = document.getElementById('response-survey-select');
+            select.innerHTML = '<option value="">Select a survey...</option>' +
+                this.surveys.map(s => '<option value="' + s.id + '">' + this.esc(s.Title) + '</option>').join('');
+        } catch(err) {}
+    },
+
+    async loadResponses() {
+        const surveyId = document.getElementById('response-survey-select').value;
+        const container = document.getElementById('responses-container');
+        if (!surveyId) {
+            container.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9776;</div><h3>Select a survey</h3><p>Choose a survey above to view its responses.</p></div>';
+            return;
+        }
+
+        this.showLoading(true);
+        try {
+            const [responses, questions] = await Promise.all([this.getResponses(surveyId), this.getQuestions(surveyId)]);
+
+            if (responses.length === 0) {
+                container.innerHTML = '<div class="empty-state"><div class="empty-icon">&#9776;</div><h3>No responses yet</h3><p>Share the survey link to start collecting responses.</p></div>';
+                this.showLoading(false);
+                return;
+            }
+
+            let html = '<div class="responses-table-wrap"><table class="responses-table"><thead><tr><th>#</th><th>Respondent</th><th>Submitted</th>' +
+                questions.map(q => '<th>' + this.esc(q.Title) + '</th>').join('') + '</tr></thead><tbody>';
+
+            responses.forEach(function(resp, idx) {
+                let ans = {};
+                try { ans = JSON.parse(resp.Answers || '{}'); } catch(e) {}
+                html += '<tr><td>' + (idx + 1) + '</td><td>' + App.esc(resp.RespondentName || resp.RespondentEmail || '-') + '</td><td>' + App.fmtDate(resp.SubmittedDate) + '</td>' +
+                    questions.map(q => '<td>' + App.esc(ans[q.id] || '-') + '</td>').join('') + '</tr>';
+            });
+
+            html += '</tbody></table></div><p style="margin-top:14px;font-size:13px;color:var(--sap-dark-gray);">Total: <span class="response-count-badge">' + responses.length + '</span></p>';
+            container.innerHTML = html;
+            this._lastExportData = { questions: questions, responses: responses };
+        } catch(err) {
+            this.showToast('Failed to load responses.');
+        }
+        this.showLoading(false);
+    },
+
+    exportResponses() {
+        if (!this._lastExportData) { this.showToast('Load responses first.'); return; }
+        const { questions, responses } = this._lastExportData;
+        const headers = ['#', 'Respondent', 'Email', 'Submitted'].concat(questions.map(q => q.Title));
+        const rows = responses.map(function(resp, idx) {
+            let ans = {};
+            try { ans = JSON.parse(resp.Answers || '{}'); } catch(e) {}
+            return [idx + 1, resp.RespondentName || '', resp.RespondentEmail || '', resp.SubmittedDate || ''].concat(questions.map(q => ans[q.id] || ''));
+        });
+
+        let csv = headers.map(h => '"' + h + '"').join(',') + '\n';
+        rows.forEach(function(row) { csv += row.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',') + '\n'; });
+
+        const blob = new Blob([csv], { type: 'text/csv' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'survey-responses.csv';
+        a.click();
+        URL.revokeObjectURL(a.href);
+        this.showToast('CSV exported.');
+    },
+
+    /* ============ MICROSOFT GRAPH (SHAREPOINT) ============ */
+    async _graphCall(endpoint, method, body) {
+        const token = await this._getToken();
+        const opts = { method: method || 'GET', headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' } };
+        if (body) opts.body = JSON.stringify(body);
+        const url = endpoint.startsWith('http') ? endpoint : this.CONFIG.graphBaseUrl + endpoint;
+        const res = await fetch(url, opts);
+        if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || 'API error ' + res.status); }
+        if (res.status === 204) return null;
+        return res.json();
+    },
+
+    _listUrl(name) { return '/sites/' + this.CONFIG.sharePointSiteId + '/lists/' + name; },
+    _itemsUrl(name) { return this._listUrl(name) + '/items?expand=fields'; },
+
+    async _graphGetSurveys() {
+        const d = await this._graphCall(this._itemsUrl(this.CONFIG.surveyListName));
+        return (d.value || []).map(i => ({ id: i.id, ...i.fields }));
+    },
+    async _graphCreateSurvey(s) {
+        const d = await this._graphCall(this._listUrl(this.CONFIG.surveyListName) + '/items', 'POST', { fields: { Title: s.Title, Description: s.Description, CreatedByEmail: s.CreatedByEmail, Status: 'Active', CreatedDate: new Date().toISOString() } });
+        return { id: d.id, ...d.fields };
+    },
+    async _graphDeleteSurvey(id) {
+        await this._graphCall(this._listUrl(this.CONFIG.surveyListName) + '/items/' + id, 'DELETE');
+    },
+    async _graphGetQuestions(sid) {
+        const d = await this._graphCall(this._itemsUrl(this.CONFIG.questionListName) + "&$filter=fields/SurveyId eq '" + sid + "'");
+        return (d.value || []).map(i => ({ id: i.id, ...i.fields })).sort((a,b) => (a.OrderIndex||0) - (b.OrderIndex||0));
+    },
+    async _graphCreateQuestion(q) {
+        const d = await this._graphCall(this._listUrl(this.CONFIG.questionListName) + '/items', 'POST', { fields: { Title: q.Title, SurveyId: q.SurveyId, QuestionType: q.QuestionType, Options: q.Options, IsRequired: q.IsRequired, OrderIndex: q.OrderIndex } });
+        return { id: d.id, ...d.fields };
+    },
+    async _graphGetResponses(sid) {
+        const d = await this._graphCall(this._itemsUrl(this.CONFIG.responseListName) + "&$filter=fields/SurveyId eq '" + sid + "'");
+        return (d.value || []).map(i => ({ id: i.id, ...i.fields }));
+    },
+    async _graphSubmitResponse(r) {
+        const d = await this._graphCall(this._listUrl(this.CONFIG.responseListName) + '/items', 'POST', { fields: { Title: 'Response-' + r.SurveyId, SurveyId: r.SurveyId, RespondentEmail: r.RespondentEmail, RespondentName: r.RespondentName, Answers: r.Answers, SubmittedDate: r.SubmittedDate } });
+        return { id: d.id, ...d.fields };
+    },
+
+    /* ============ MSAL AUTH ============ */
+    _msalInstance: null,
+    _msalAccount: null,
+
+    _initMSAL() {
+        if (this._msalInstance) return;
+        const cfg = { auth: { clientId: this.CONFIG.clientId, authority: 'https://login.microsoftonline.com/' + this.CONFIG.tenantId, redirectUri: this.CONFIG.redirectUri }, cache: { cacheLocation: 'sessionStorage' } };
+        this._msalInstance = new msal.PublicClientApplication(cfg);
+    },
+
+    async _msalLogin() {
+        this._initMSAL();
+        try { await this._msalInstance.loginRedirect({ scopes: this.CONFIG.scopes }); } catch(e) { this.showToast('Login failed.'); }
+    },
+
+    async _msalLogout() {
+        if (this._msalInstance) await this._msalInstance.logoutRedirect();
+    },
+
+    async _getToken() {
+        try {
+            const r = await this._msalInstance.acquireTokenSilent({ scopes: this.CONFIG.scopes, account: this._msalAccount });
+            return r.accessToken;
+        } catch(e) {
+            await this._msalInstance.acquireTokenRedirect({ scopes: this.CONFIG.scopes });
+        }
+    },
+
+    async _handleMSALRedirect() {
+        this._initMSAL();
+        const resp = await this._msalInstance.handleRedirectPromise();
+        if (resp) { this._msalAccount = resp.account; }
+        else {
+            const accts = this._msalInstance.getAllAccounts();
+            if (accts.length > 0) this._msalAccount = accts[0];
+        }
+        if (this._msalAccount) {
+            this.currentUser = { name: this._msalAccount.name || this._msalAccount.username, email: this._msalAccount.username };
+            // Validate user against RegisteredUsers master list
+            try {
+                const emailField = this.CONFIG.masterFields.email;
+                const masterData = await this._graphCall(this._itemsUrl(this.CONFIG.masterListName));
+                const users = (masterData.value || []).map(i => i.fields);
+                const match = users.find(u => u[emailField] && u[emailField].toLowerCase() === this.currentUser.email.toLowerCase());
+                if (match) {
+                    const fnField = this.CONFIG.masterFields.fullName;
+                    const roleField = this.CONFIG.masterFields.role;
+                    this.currentUser.fullName = match[fnField] || this.currentUser.name;
+                    this.currentUser.role = match[roleField] || 'Viewer';
+                    this.currentUser.isRegistered = true;
+                } else {
+                    this.currentUser.isRegistered = false;
+                    this.currentUser.role = 'Viewer';
+                }
+            } catch(e) {
+                console.warn('Could not validate against master list:', e);
+                this.currentUser.isRegistered = true;
+                this.currentUser.role = 'Viewer';
+            }
+            this._onLoginSuccess();
+        }
+    },
+
+    /* ============ UTILITY ============ */
+    showLoading(show) { document.getElementById('loading-overlay').classList.toggle('hidden', !show); },
+
+    showToast(msg) {
+        const t = document.getElementById('toast');
+        document.getElementById('toast-message').textContent = msg;
+        t.classList.remove('hidden');
+        clearTimeout(this._toastTimer);
+        this._toastTimer = setTimeout(() => t.classList.add('hidden'), 3500);
+    },
+
+    esc(str) {
+        if (!str) return '';
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+    },
+
+    fmtDate(s) {
+        if (!s) return '-';
+        try { return new Date(s).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }); }
+        catch(e) { return s; }
+    }
+};
+
+/* ============ BOOT ============ */
+window.addEventListener('DOMContentLoaded', function() {
+    if (App.USE_SHAREPOINT) {
+        // Load MSAL and handle redirect
+        const script = document.createElement('script');
+        script.src = 'https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js';
+        script.onload = function() { App._handleMSALRedirect(); };
+        document.head.appendChild(script);
+    }
+    // If not using SharePoint, user clicks "Sign in" button which calls App.login() directly
+});
+</script>
+</body>
+</html>
